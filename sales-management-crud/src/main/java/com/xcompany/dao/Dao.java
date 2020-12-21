@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface Dao <T>{
 	
-	void create(T item);
+	void create(T t);
 	
 	List<T> readAll();
 	
-	void update(T item);
+	void update(T t);
 	
-	void delete(int id);	
+	void delete(T t);	
 }
