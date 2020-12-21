@@ -5,6 +5,16 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 	<description>sales-management-crud</description>
+	<servlet>
+		<servlet-name>SaleServlet</servlet-name>
+		<display-name>SaleServlet</display-name>
+		<description></description>
+		<servlet-class>com.xcompany.controller.SaleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SaleServlet</servlet-name>
+		<url-pattern>/SaleServlet</url-pattern>
+	</servlet-mapping>
 	
 	<resource-ref>
 		<description>MySQL DB Connection</description>
