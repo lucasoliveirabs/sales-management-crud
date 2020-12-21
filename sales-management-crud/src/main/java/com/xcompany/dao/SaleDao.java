@@ -54,14 +54,32 @@ public class SaleDao implements Dao<Sale> {
 		return null;
 	}
 
-	public void update(Sale t) {
-		// TODO Auto-generated method stub
-
+	public void update(Sale sale) {
+		Connection connection = null;
+		PreparedStatement st = null;
+		try {
+			connection = datasource.getConnection();
+			st = connection.prepareStatement(SQL_UPDATE);
+			st.setInt(1, sale.getProductId());
+			st.setInt(2, sale.getLeadId());
+			st.setDate(3, new java.sql.Date(sale.getSaleDate().getTime()));
+			st.setDate(4, new java.sql.Date(sale.getSaleDeliveryDate().getTime()));
+			st.setString(5, sale.getSaleDeliveryAddress());
+			st.setString(6, sale.getSaleObs());
+			st.setString(7, sale.getSaleStatus());
+			st.setDate(8, new java.sql.Date(sale.getSaleCancelDate().getTime()));
+			st.setString(9, sale.getSaleCancelReason());
+			st.setInt(10, sale.getSaleId());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, st);
+		}
 	}
 
-	public void delete(Sale t) {
-		// TODO Auto-generated method stub
-
+	public void delete(Sale sale) {
+		
 	}
 
 	private void close(Connection connection, PreparedStatement st) {
@@ -71,6 +89,22 @@ public class SaleDao implements Dao<Sale> {
 			}
 			if (st != null) {
 				st.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void close(Connection connection, PreparedStatement st, ResultSet rs) {
+		try {
+			if (connection != null) {
+				connection.close();
+			}
+			if (st != null) {
+				st.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
