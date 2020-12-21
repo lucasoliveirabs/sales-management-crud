@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -50,8 +52,39 @@ public class SaleDao implements Dao<Sale> {
 	}
 
 	public List<Sale> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		PreparedStatement st = null;
+		List<Sale> list = new ArrayList<Sale>();
+		ResultSet rs = null;
+		try {
+			connection = datasource.getConnection();
+			st = connection.prepareStatement(SQL_READALL);
+			rs = st.executeQuery();
+			while (rs.next()) {
+				Sale s = new Sale();
+				s.setSaleId(rs.getInt(1));
+				s.setProductId(rs.getInt(2));
+				s.setLeadId(rs.getInt(3));
+				s.setSaleDate(rs.getDate(4));
+				s.setSaleDeliveryDate(new java.util.Date(rs.getDate(5).getTime()));
+				s.setSaleDeliveryAddress(rs.getString(6));
+				s.setSaleObs(rs.getString(7));
+				s.setSaleStatus(rs.getString(8));
+				Date cancelDate = rs.getDate(9);
+				if (cancelDate == null) {
+					s.setSaleCancelDate(cancelDate);
+				} else {
+					s.setSaleCancelDate(new java.util.Date(cancelDate.getTime()));
+				}
+				s.setSaleCancelReason(rs.getString(10));
+				list.add(s);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(connection, st, rs);
+		}
+		return list;
 	}
 
 	public void update(Sale sale) {
