@@ -111,21 +111,21 @@ public class SaleDao implements Dao<Sale> {
 		}
 	}
 
-	public void delete(Sale sale) {
+	public void delete(Integer i) {
 		Connection connection = null;
 		PreparedStatement st = null;
 		try {
 			connection = datasource.getConnection();
 			st = connection.prepareStatement(SQL_DELETE);
-			st.setInt(1, sale.getSaleId());
+			st.setInt(1, i.intValue());
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(connection, st);
-		}
+		}			
 	}
-
+	
 	private void close(Connection connection, PreparedStatement st) {
 		try {
 			if (connection != null) {
