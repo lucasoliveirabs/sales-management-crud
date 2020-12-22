@@ -15,12 +15,11 @@ import javax.sql.DataSource;
 import com.xcompany.dao.SaleDao;
 import com.xcompany.model.Sale;
 
-@WebServlet("/SaleServlet")
+@WebServlet(urlPatterns={"/home","/SaleServlet"}, name="SaleServlet")
 public class SaleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private SaleDao dao;
-
 	@Resource(name = "jdbc/salescrud")
 	private DataSource datasource;
 
@@ -45,7 +44,6 @@ public class SaleServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 	}
 
 	private void readSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -54,5 +52,4 @@ public class SaleServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
 		rd.forward(request, response);
 	}
-
 }
