@@ -65,7 +65,7 @@ public class SaleDao implements Dao<Sale> {
 				s.setSaleId(rs.getInt(1));
 				s.setProductId(rs.getInt(2));
 				s.setLeadId(rs.getInt(3));
-				s.setSaleDate(rs.getDate(4));
+				s.setSaleDate(new java.util.Date(rs.getDate(4).getTime()));
 				s.setSaleDeliveryDate(new java.util.Date(rs.getDate(5).getTime()));
 				s.setSaleDeliveryAddress(rs.getString(6));
 				s.setSaleObs(rs.getString(7));
