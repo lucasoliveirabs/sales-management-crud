@@ -123,35 +123,58 @@ public class SaleDao implements Dao<Sale> {
 			e.printStackTrace();
 		} finally {
 			close(connection, st);
-		}			
-	}
-	
-	private void close(Connection connection, PreparedStatement st) {
-		try {
-			if (connection != null) {
-				connection.close();
-			}
-			if (st != null) {
-				st.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
-	
-	private void close(Connection connection, PreparedStatement st, ResultSet rs) {
-		try {
-			if (connection != null) {
+
+	private void close(Connection connection, PreparedStatement st) {
+		if (connection != null) {
+			try {
 				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Connection closing failure");
 			}
-			if (st != null) {
+			connection = null;
+		}
+		if (st != null) {
+			try {
 				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Statement closing failure");
 			}
-			if(rs != null) {
+			st = null;
+		}
+	}
+
+	private void close(Connection connection, PreparedStatement st, ResultSet rs) {
+		if (connection != null) {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Connection closing failure");
+			}
+			connection = null;
+		}
+		if (st != null) {
+			try {
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Statement closing failure");
+			}
+			st = null;
+		}
+
+		if (rs != null) {
+			try {
 				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("ResultSet closing failure");
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			rs = null;
 		}
 	}
 }
