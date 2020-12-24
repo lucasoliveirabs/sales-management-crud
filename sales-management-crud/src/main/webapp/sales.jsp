@@ -37,15 +37,15 @@
 						<td>${s.saleId}</td>
 						<td>${s.productId}</td>
 						<td>${s.leadId}</td>
-			<!--			<td><fmt:formatDate value="${s.saleDate}"
-								pattern="yyyy-MM-dd HH:mm" /></td> -->
-			<!--			<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-								value="${s.saleDeliveryDate}" /></td> -->
+						<td><fmt:formatDate value="${s.saleDate}"
+								pattern="yyyy-MM-dd HH:mm" /></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+								value="${s.saleDeliveryDate}" /></td>
 						<td>${s.saleDeliveryAddress}</td>
 						<td>${s.saleObs}</td>
 						<td>${s.saleStatus}</td>
-			<!-- 			<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-								value="${s.saleCancelDate}" /></td> -->
+						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+								value="${s.saleCancelDate}" /></td>
 						<td>${s.saleCancelReason}</td>
 					</tr>
 				</c:forEach>
@@ -54,9 +54,7 @@
 		</div>
 	</div>
 
-	<footer>
-
-	</footer>
+	<footer> </footer>
 
 
 </body>
