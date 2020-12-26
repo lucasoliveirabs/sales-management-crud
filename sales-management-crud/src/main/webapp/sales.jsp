@@ -5,18 +5,20 @@
 <html>
 <head>
 <title>Sales</title>
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
 
-	<div class="wrapper">
+	<div id="wrapper">
 		<div id="header">
 			<h2>Sales</h2>
 		</div>
 
 	</div>
 
-	<div class="container">
+	<div id="container">
 		<div id="content">
 			<table>
 				<tr>
@@ -41,7 +43,7 @@
 								pattern="yyyy-MM-dd HH:mm" /></td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 								value="${s.saleDeliveryDate}" /></td>
-						<td>${s.saleDeliveryAddress}</td>
+						<td> ${s.saleDeliveryAddress}</td>
 						<td>${s.saleObs}</td>
 						<td>${s.saleStatus}</td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
