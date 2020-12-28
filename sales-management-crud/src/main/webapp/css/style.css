@@ -21,3 +21,5 @@ tr:nth-child(even) {background: #FFFFFF}
 tr:nth-child(odd) {background: #BBBBBB}
 
 #wrapper {width: 100%; margin-top: 0px;}
+#header {background: #0775d3; text-align:center;}
+#header h2 {margin:1px; color: #FFFFFF; border-bottom:1px solid gray; padding: 2px 0px 2px 0px}
