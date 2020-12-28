@@ -6,7 +6,7 @@ html {
 table {
 	border-collapse: collapse;
 	border: 1px solid black;
-	width: 100%;
+	width: 95%;
 	text-align: center;
 }
 
@@ -20,7 +20,7 @@ padding: 7px;
 tr:nth-child(even) {background: #FFFFFF}
 tr:nth-child(odd) {background: #BBBBBB}
 
-#wrapper {width: 100%; margin-top: 0px;}
+#wrapper {width: 95%; margin-top: 0px;}
 #header {background: #0775d3; text-align:center;}
 #header h2 {margin:1px; color: #FFFFFF; border-bottom:1px solid gray; padding: 2px 0px 2px 0px}
 #container {width: 100%; margin:auto}
