@@ -1,6 +1,11 @@
 html {
-	margin-right: 10px;
-	margin-left: 10px;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 5px 10px 10px 10px;
+	font-family: Verdana, sans-serif;
 }
 
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+	width: 100%;
+	text-align: center;
+}
