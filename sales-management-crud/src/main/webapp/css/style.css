@@ -1,26 +1,63 @@
-html {
-	margin: 5px 10px 10px 10px;
-	font-family: Verdana, sans-serif;
+*{
+	padding:0;
+	margin:0;
+}
+
+.header {
+	width: 100%;
+}
+
+nav {
+	background-color: #928E8D;
+	height: 30px;
+}
+
+nav ul li{
+	list-style-type: none;
+	width: 100px;
+	float: left;
+	text-align: center;
+}
+
+li a{
+	text-decoration: none;
+	line-height: 30px;
+	color: #FFFFFF;
+	display: block;
+}
+
+li a:hover{
+	background-color: #0775d3;
+	color: #FFFFFF;
 }
 
 table {
 	border-collapse: collapse;
 	border: 1px solid black;
-	width: 95%;
+	width: 100%;
 	text-align: center;
 }
 
 th {
-border-bottom: 1px solid gray;
-color: #FFFFFF;
-background: #0775d3;
-padding: 7px;
+	border-bottom: 1px solid gray;
+	color: #FFFFFF;
+	background: #0775d3;
+	padding: 7px;
 }
 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #BBBBBB}
+tr {
+	font-size: 0.875em;
+}
 
-#wrapper {width: 95%; margin-top: 0px;}
-#header {background: #0775d3; text-align:center;}
-#header h2 {margin:1px; color: #FFFFFF; border-bottom:1px solid gray; padding: 2px 0px 2px 0px}
-#container {width: 100%; margin:auto}
+tr:nth-child(even) {
+	background: #FFFFFF
+}
+
+tr:nth-child(odd) {
+	background: #EDEDED
+}
+
+#container {
+	width: 100%;
+	margin: auto
+}	
