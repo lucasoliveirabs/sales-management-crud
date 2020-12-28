@@ -11,11 +11,14 @@
 
 <body>
 
-	<div id="wrapper">
-		<div id="header">
-			<h2>Sales</h2>
-		</div>
-
+	<div class="header">
+		<nav>
+			<ul>
+				<li><a href="#">Sales</a></li>
+				<li><a href="#">Products</a></li>
+				<li><a href="#">Leads</a></li>
+			</ul>
+		</nav>
 	</div>
 
 	<div id="container">
@@ -43,7 +46,7 @@
 								pattern="yyyy-MM-dd HH:mm" /></td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 								value="${s.saleDeliveryDate}" /></td>
-						<td> ${s.saleDeliveryAddress}</td>
+						<td>${s.saleDeliveryAddress}</td>
 						<td>${s.saleObs}</td>
 						<td>${s.saleStatus}</td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
