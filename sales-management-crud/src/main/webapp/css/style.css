@@ -16,3 +16,6 @@ color: #FFFFFF;
 background: #0775d3;
 padding: 7px;
 }
+
+tr:nth-child(even) {background: #FFFFFF}
+tr:nth-child(odd) {background: #BBBBBB}
