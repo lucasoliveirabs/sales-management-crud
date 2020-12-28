@@ -9,3 +9,10 @@ table {
 	width: 100%;
 	text-align: center;
 }
+
+th {
+border-bottom: 1px solid gray;
+color: #FFFFFF;
+background: #0775d3;
+padding: 7px;
+}
