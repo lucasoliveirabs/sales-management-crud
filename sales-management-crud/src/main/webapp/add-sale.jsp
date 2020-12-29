@@ -13,7 +13,7 @@
 	<div class="header">
 		<nav>
 			<ul>
-				<li><a href="#">Sales</a></li>
+				<li><a href="SaleServlet">Sales</a></li>
 				<li><a href="#">Products</a></li>
 				<li><a href="#">Leads</a></li>
 			</ul>
@@ -28,33 +28,42 @@
 			<table>
 				<tbody>
 					<tr>
-						<td><label>Product id</label></td>
-						<td><input type="text" name="productId"/></td>
+						<td><label>Product id:</label></td>
+						<td><input type="text" name="productId" /></td>
 					</tr>
 
 					<tr>
-						<td><label>Lead id</label></td>
-						<td><input type="text" name="leadId"/></td>
+						<td><label>Lead id:</label></td>
+						<td><input type="text" name="leadId" /></td>
 					</tr>
 
 					<tr>
-						<td><label>Sale date</label></td>
-						<td><input type="datetime-local" name="saleDate"/>
+						<td><label>Sale date:</label></td>
+						<td><input type="datetime-local" name="saleDate" />
 					</tr>
 
 					<tr>
-						<td><label>Delivery date</label></td>
-						<td><input type="datetime-local" name="deliveryDate"/>
+						<td><label>Delivery date:</label></td>
+						<td><input type="datetime-local" name="deliveryDate" />
 					</tr>
 
 					<tr>
-						<td><label>Delivery address</label></td>
-						<td><input type="text" name="deliveryAddress"/></td>
+						<td><label>Delivery address:</label></td>
+						<td><input type="text" name="deliveryAddress" /></td>
 					</tr>
 
 					<tr>
-						<td><label>Observation</label></td>
-						<td><input type="text" name="observation"/></td>
+						<td><label>Observation:</label></td>
+						<td><input type="text" name="observation" /></td>
+					</tr>
+
+					<tr class="blank-row">
+						<td colspan="2"></td>
+					</tr>
+
+					<tr>
+						<td><label></label></td>
+						<td><input type="submit" value="Add Sale" class="add"/></td>
 					</tr>
 				</tbody>
 			</table>
