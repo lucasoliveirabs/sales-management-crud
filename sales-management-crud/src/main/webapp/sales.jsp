@@ -14,7 +14,7 @@
 	<div class="header">
 		<nav>
 			<ul>
-				<li><a href="#">Sales</a></li>
+				<li><a href="SaleServlet">Sales</a></li>
 				<li><a href="#">Products</a></li>
 				<li><a href="#">Leads</a></li>
 			</ul>
@@ -25,7 +25,7 @@
 		<div id="content">
 		
 			<input type="button" value="New Sale" class="new-sale" 
-			onclick="window.location.href='add-sale';return false;"/>  
+			onclick="window.location.href='add-sale.jsp';return false;"/>  
 		
 			<table>
 				<tr>
@@ -63,7 +63,6 @@
 	</div>
 
 	<footer> </footer>
-
 
 </body>
 </html>
