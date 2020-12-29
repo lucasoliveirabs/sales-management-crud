@@ -31,12 +31,34 @@ li a:hover{
 	color: #FFFFFF;
 }
 
+.container {
+	width: 100%;
+	margin: 0px 10px 0px 5px;
+}
+
+.new-sale {
+	position: absolute;
+	top: 9%;
+	border: 1px solid gray; 
+	border-radius: 10px; 
+	font-size: 0.8em;
+	width: 120px; 
+	padding: 5px 10px; 
+	color: #FFFFFF;
+	background: #0775d3;
+}	
+
+.new-sale:hover{
+	background-color: #00cc00;
+	color: #FFFFFF;
+}
+
 table {	
 	position: absolute;
-	top: 13%;
+	top: 15%;
 	border-collapse: collapse;
 	border: 1px solid black;
-	width: 100%;
+	width: 90%;
 	text-align: center;
 }
 
@@ -53,26 +75,4 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
 	background: #EDEDED
-}
-
-.container {
-	width: 100%;
-	margin: 0px 10px 0px 5px;
-}
-
-.new-sale {
-	position: absolute;
-	top: 7%;
-	border: 1px solid gray; 
-	border-radius: 10px; 
-	font-size: 0.8em;
-	width: 120px; 
-	padding: 5px 10px; 
-	color: #FFFFFF;
-	background: #0775d3;
-}	
-
-.new-sale:hover{
-	background-color: #00cc00;
-	color: #FFFFFF;
 }
