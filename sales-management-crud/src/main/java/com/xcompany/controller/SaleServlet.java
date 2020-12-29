@@ -61,11 +61,21 @@ public class SaleServlet extends HttpServlet {
 			throws ServletException, IOException {
 	}
 
+	private void createSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Sale s = new Sale();
+		s.setLeadId(Integer.parseInt(request.getParameter("productId")));
+		s.setProductId(Integer.parseInt(request.getParameter("leadId")));
+		s.setSaleDate(parseDate(request.getParameter("saleDate")));
+		s.setSaleDeliveryDate(parseDate(request.getParameter("deliveryDate")));
+		s.setSaleDeliveryAddress(request.getParameter("deliveryAddress"));
+		s.setSaleObs(request.getParameter("observation"));
+		dao.create(s);
+	}
+	
 	private void readSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<Sale> list = dao.readAll();
 		request.setAttribute("salesList", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
 		rd.forward(request, response);
 	}
-	
 }
