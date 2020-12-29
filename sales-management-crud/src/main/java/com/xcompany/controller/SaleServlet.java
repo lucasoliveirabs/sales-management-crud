@@ -3,6 +3,10 @@ package com.xcompany.controller;
 import java.io.IOException;
 import java.util.List;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -77,5 +81,11 @@ public class SaleServlet extends HttpServlet {
 		request.setAttribute("salesList", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
 		rd.forward(request, response);
+	}
+	
+	private Date parseDate(String inputDate) throws ParseException { //set to do not allow empty inputs
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+		Date date = (Date) df.parse(inputDate); 
+		return date;
 	}
 }
