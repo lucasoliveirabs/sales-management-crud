@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import com.xcompany.dao.SaleDao;
 import com.xcompany.model.Sale;
 
-@WebServlet(urlPatterns={"/home","/SaleServlet"}, name="SaleServlet")
+@WebServlet(urlPatterns = { "/home", "/SaleServlet" }, name = "SaleServlet")
 public class SaleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,22 @@ public class SaleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			readSales(request, response);
+			String command = request.getParameter("command");
+
+			if (command == null) {
+				command = "LIST";
+			}
+
+			switch (command) {
+			case "ADD":
+				createSale(request, response);
+				break;
+			case "LIST":
+				readSales(request, response);
+				break;			
+			default:
+				readSales(request, response);
+			}
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
@@ -52,4 +67,5 @@ public class SaleServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
 		rd.forward(request, response);
 	}
+	
 }
