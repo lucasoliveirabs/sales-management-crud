@@ -21,8 +21,12 @@
 		</nav>
 	</div>
 
-	<div id="container">
+	<div class="container">
 		<div id="content">
+		
+			<input type="button" value="New Sale" class="new-sale" 
+			onclick="window.location.href='add-sale';return false;"/>  
+		
 			<table>
 				<tr>
 					<th>Sale id</th>
@@ -54,7 +58,6 @@
 						<td>${s.saleCancelReason}</td>
 					</tr>
 				</c:forEach>
-
 			</table>
 		</div>
 	</div>
