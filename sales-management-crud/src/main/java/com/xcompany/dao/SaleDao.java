@@ -41,7 +41,12 @@ public class SaleDao implements Dao<Sale> {
 			st.setString(5, sale.getSaleDeliveryAddress());
 			st.setString(6, sale.getSaleObs());
 			st.setString(7, sale.getSaleStatus());
-			st.setDate(8, new java.sql.Date(sale.getSaleCancelDate().getTime()));
+			Date cancelDate = sale.getSaleCancelDate();
+			if (cancelDate == null) {
+				st.setDate(8, null);
+			} else {
+				st.setDate(8, new java.sql.Date(sale.getSaleCancelDate().getTime()));
+			}
 			st.setString(9, sale.getSaleCancelReason());
 			st.executeUpdate();
 		} catch (SQLException e) {
