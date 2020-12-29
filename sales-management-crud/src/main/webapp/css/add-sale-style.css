@@ -1,11 +1,29 @@
-form {
+#h3-list {
+	height: 35px;
 	position: absolute;
 	top: 10%;
+	left: 3%;
+}
+
+#h3-list ul li{
+	list-style-type: none;
+}
+
+ul li h3{
+	float: left;
+	text-align: center;
+	color: #696969;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+form {
+	position: absolute;
+	top: 19%;
 	left: 2%;
 }
 	
 label {
-	font-size: 1.1em;
 	width: 130px;
 	display: block;
 	text-align: right;
