@@ -11,4 +11,6 @@ public interface Dao <T>{
 	void update(T t);
 	
 	void delete(Integer i);	
+	
+	T readById(String s);
 }
