@@ -41,7 +41,6 @@ public class SaleServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String command = request.getParameter("command");
-
 			if (command == null) {
 				command = "LIST";
 			}
@@ -52,7 +51,10 @@ public class SaleServlet extends HttpServlet {
 				break;
 			case "LIST":
 				readSales(request, response);
-				break;			
+				break;
+			case "EDIT":
+				updateSale(request, response);
+				break;
 			default:
 				readSales(request, response);
 			}
@@ -66,26 +68,44 @@ public class SaleServlet extends HttpServlet {
 	}
 
 	private void createSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		int leadId = Integer.parseInt(request.getParameter("leadId"));
+		Date saleDate = parseDate(request.getParameter("saleDate"));
+		Date deliveryDate = parseDate(request.getParameter("deliveryDate"));
+		String deliveryAddress = request.getParameter("deliveryAddress");
+		String status = request.getParameter("status");
+		String obs = request.getParameter("observation");
+
 		Sale s = new Sale();
-		s.setLeadId(Integer.parseInt(request.getParameter("productId")));
-		s.setProductId(Integer.parseInt(request.getParameter("leadId")));
-		s.setSaleDate(parseDate(request.getParameter("saleDate")));
-		s.setSaleDeliveryDate(parseDate(request.getParameter("deliveryDate")));
-		s.setSaleDeliveryAddress(request.getParameter("deliveryAddress"));
-		s.setSaleObs(request.getParameter("observation"));
+		s.setProductId(productId);
+		s.setLeadId(leadId);
+		s.setSaleDate(saleDate);
+		s.setSaleDeliveryDate(deliveryDate);
+		s.setSaleDeliveryAddress(deliveryAddress);
+		s.setSaleStatus(status);
+		s.setSaleObs(obs);
+
 		dao.create(s);
 	}
-	
+
 	private void readSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<Sale> list = dao.readAll();
 		request.setAttribute("salesList", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
 		rd.forward(request, response);
 	}
-	
-	private Date parseDate(String inputDate) throws ParseException { //set to do not allow empty inputs
+
+	private void updateSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String saleId = request.getParameter("saleId");
+		Sale sale = dao.readById(saleId);
+		request.setAttribute("sale", sale);
+		RequestDispatcher rd = request.getRequestDispatcher("/update-sale.jsp");
+		rd.forward(request, response);
+	}
+
+	private Date parseDate(String inputDate) throws ParseException { // set to do not allow empty inputs
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-		Date date = (Date) df.parse(inputDate); 
+		Date date = (Date) df.parse(inputDate);
 		return date;
 	}
 }
