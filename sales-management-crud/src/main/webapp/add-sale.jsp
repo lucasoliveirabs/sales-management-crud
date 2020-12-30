@@ -64,14 +64,20 @@
 							<td><input type="text" name="observation" /></td>
 						</tr>
 
+
+						<td><label>Status:</label></td>
+						<td class="status"><input type="radio" name="status"
+							value="D">Delivered 
+							<input type="radio" name="status" value="N">Not delivered</td>
+
 						<tr class="blank-row">
 							<td colspan="2"></td>
 						</tr>
 
 						<tr>
 							<td><label></label></td>
-							<td><input type="submit" value="Add Sale" class="add" 
-							onclick="window.location.href='SaleServlet';return false;"/></td>
+							<td><input type="submit" value="Add Sale" class="add"
+								onclick="window.location.href='SaleServlet';return false;" /></td>
 						</tr>
 
 					</tbody>
