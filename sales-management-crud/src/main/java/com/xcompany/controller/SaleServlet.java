@@ -76,16 +76,16 @@ public class SaleServlet extends HttpServlet {
 		String status = request.getParameter("status");
 		String obs = request.getParameter("observation");
 
-		Sale s = new Sale();
-		s.setProductId(productId);
-		s.setLeadId(leadId);
-		s.setSaleDate(saleDate);
-		s.setSaleDeliveryDate(deliveryDate);
-		s.setSaleDeliveryAddress(deliveryAddress);
-		s.setSaleStatus(status);
-		s.setSaleObs(obs);
+		Sale sale = new Sale();
+		sale.setProductId(productId);
+		sale.setLeadId(leadId);
+		sale.setSaleDate(saleDate);
+		sale.setSaleDeliveryDate(deliveryDate);
+		sale.setSaleDeliveryAddress(deliveryAddress);
+		sale.setSaleStatus(status);
+		sale.setSaleObs(obs);
 
-		dao.create(s);
+		dao.create(sale);
 	}
 
 	private void readSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
