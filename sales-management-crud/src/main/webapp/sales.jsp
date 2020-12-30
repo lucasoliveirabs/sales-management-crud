@@ -23,10 +23,10 @@
 
 	<div class="container">
 		<div id="content">
-		
-			<input type="button" value="New Sale" class="new-sale" 
-			onclick="window.location.href='add-sale.jsp';return false;"/>  
-		
+
+			<input type="button" value="New Sale" class="new-sale"
+				onclick="window.location.href='add-sale.jsp';return false;" />
+
 			<table>
 				<tr>
 					<th>Sale id</th>
@@ -39,9 +39,16 @@
 					<th>Status</th>
 					<th>Cancel date</th>
 					<th>Cancel reason</th>
+					<th>Action</th>
 				</tr>
 
 				<c:forEach var="s" items="${salesList}">
+
+					<c:url var="saleUpdate" value="SaleServlet">
+						<c:param name="command" value="EDIT" />
+						<c:param name="saleId" value="${s.saleId}" />
+					</c:url>
+
 					<tr>
 						<td>${s.saleId}</td>
 						<td>${s.productId}</td>
@@ -56,6 +63,7 @@
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 								value="${s.saleCancelDate}" /></td>
 						<td>${s.saleCancelReason}</td>
+						<td><a href="${saleUpdate}">Update</a></td>
 					</tr>
 				</c:forEach>
 			</table>
