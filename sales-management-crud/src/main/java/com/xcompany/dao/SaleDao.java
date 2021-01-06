@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -75,11 +73,9 @@ public class SaleDao implements Dao<Sale> {
 				sale.setProductId(rs.getInt(2));
 				sale.setLeadId(rs.getInt(3));
 				Timestamp tsSaleDate = (Timestamp) rs.getObject(4);
-				Date saleDate = new java.util.Date(tsSaleDate.getTime());
-				sale.setSaleDate(formatDate(saleDate));				
+				sale.setSaleDate(new java.util.Date(tsSaleDate.getTime()));	
 				Timestamp tsDeliveryDate = (Timestamp) rs.getObject(5);
-				Date deliveryDate = new java.util.Date(tsDeliveryDate.getTime());
-				sale.setSaleDeliveryDate(formatDate(deliveryDate));				
+				sale.setSaleDeliveryDate(new java.util.Date(tsDeliveryDate.getTime()));	
 				sale.setSaleDeliveryAddress(rs.getString(6));
 				sale.setSaleObs(rs.getString(7));
 				sale.setSaleStatus(rs.getString(8));
@@ -88,8 +84,7 @@ public class SaleDao implements Dao<Sale> {
 					sale.setSaleCancelDate(cancelDate);
 				} else {
 					Timestamp tsCancelDate = (Timestamp) rs.getObject(9);
-					Date dCancelDate = new java.util.Date(tsCancelDate.getTime());
-					sale.setSaleCancelDate(formatDate(dCancelDate));
+					sale.setSaleCancelDate(new java.util.Date(tsCancelDate.getTime()));
 				}
 				sale.setSaleCancelReason(rs.getString(10));
 				list.add(sale);
@@ -165,11 +160,9 @@ public class SaleDao implements Dao<Sale> {
 				sale.setProductId(rs.getInt(2));
 				sale.setLeadId(rs.getInt(3));
 				Timestamp tsSaleDate = (Timestamp) rs.getObject(4);
-				Date saleDate = new java.util.Date(tsSaleDate.getTime());
-				sale.setSaleDate(formatDate(saleDate));	
+				sale.setSaleDate(new java.util.Date(tsSaleDate.getTime()));	
 				Timestamp tsDeliveryDate = (Timestamp) rs.getObject(5);
-				Date deliveryDate = new java.util.Date(tsDeliveryDate.getTime());
-				sale.setSaleDeliveryDate(formatDate(deliveryDate));		
+				sale.setSaleDeliveryDate(new java.util.Date(tsDeliveryDate.getTime()));		
 				sale.setSaleDeliveryAddress(rs.getString(6));
 				sale.setSaleObs(rs.getString(7));
 				sale.setSaleStatus(rs.getString(8));
@@ -178,8 +171,7 @@ public class SaleDao implements Dao<Sale> {
 					sale.setSaleCancelDate(cancelDate);
 				} else {
 					Timestamp tsCancelDate = (Timestamp) rs.getObject(9);
-					Date dCancelDate = new java.util.Date(tsCancelDate.getTime());
-					sale.setSaleCancelDate(formatDate(dCancelDate));
+					sale.setSaleCancelDate(new java.util.Date(tsCancelDate.getTime()));
 				}
 				sale.setSaleCancelReason(rs.getString(10));
 			} else {
@@ -223,22 +215,6 @@ public class SaleDao implements Dao<Sale> {
 				System.out.println("ResultSet closing failure");
 			}
 			rs = null;
-		}
-	}
-
-	private Date formatDate(Date dateIn) {
-		if (dateIn == null) {
-			return null;
-		} else {
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			String s = df.format(dateIn);
-			Date dateOut = null;
-			try {
-				dateOut = df.parse(s);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			return dateOut;
 		}
 	}
 }
