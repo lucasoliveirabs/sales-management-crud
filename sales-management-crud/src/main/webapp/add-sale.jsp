@@ -6,31 +6,53 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/add-sale-style.css">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"
+	type="text/javascript"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"
+	type="text/javascript"></script>
 <script type="text/javascript">
-	function checkSubmit() {
-		var inputs = [ document.forms["mainForm"]["productId"].value, document.forms["mainForm"]["leadId"].value, 
-			document.forms["mainForm"]["saleDate"].value, document.forms["mainForm"]["deliveryDate"].value,
-		document.forms["mainForm"]["deliveryAddress"].value ];  // null 'observation' allowed 
-		
-		function verifyItem(item) {
-			if (item.trim() == ""){
-				alert("Except 'Observation', all fields must be filled!");
-				return false;
-			} else {
-				if (i == 0 || i == 1){
-					if (isNaN(item)) {
-						alert("'Product id' and 'Lead id' must be numbers!");
-						return false;
-					}
+	$(document).ready(function() {
+		$("#mainForm").validate({
+			rules:{
+				productId: {
+					required: true,
+					number: true
+				},
+				leadId: {
+					required: true,
+					number: true
+				},
+				saleDate:{
+					required: true
+				},
+				deliveryDate:{
+					required: true
+				},
+				deliveryAddress:{
+					required: true
 				}
+			},
+			messages:{
+				productId:{
+					required: "In doubt? Check out our products list!",  
+					number: "Oh! It has to be a number!"
+				},
+				leadId:{
+					required: "In doubt? Check out our leads list!",
+					number: "Oh! It has to be a number!"
+				},
+				saleDate:{
+					required: "When did we sold it?"
+				},
+				deliveryDate:{
+					required: "When are we going to deliver it?"
+				},
+				deliveryAddress:{
+					required: "Where are we we going to deliver it?"
+				},
 			}
-		}
-		var bool = inputs.forEach(verifyItem(item, i));
-		if (bool = true){
-			alert("Sales list successfully updated!");
-		}
-		return bool;
-	}
+		});
+	});
 </script>
 </head>
 
@@ -55,8 +77,7 @@
 		</div>
 
 		<div id="form">
-			<form name="mainForm" action="SaleServlet" method="GET"
-				onsubmit="return checkSubmit()">
+			<form name="mainForm" id="mainForm" action="SaleServlet" method="GET">
 				<input type="hidden" name="command" value="ADD" />
 
 				<table>
