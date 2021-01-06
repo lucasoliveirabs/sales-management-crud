@@ -55,7 +55,8 @@ li a:hover{
 
 table {	
 	position: absolute;
-	top: 15%;
+	top: 17%;
+	left: 5%;
 	border-collapse: collapse;
 	border: 1px solid black;
 	width: 90%;
@@ -75,4 +76,10 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
 	background: #EDEDED
+}
+
+label.error{
+	display:block;
+    width:100%;
+    color: #ff8080;
 }
