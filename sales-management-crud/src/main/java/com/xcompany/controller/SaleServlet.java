@@ -94,6 +94,12 @@ public class SaleServlet extends HttpServlet {
 	private void loadSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String saleId = request.getParameter("saleId");
 		Sale sale = dao.readById(saleId);
+		String saleDate = parseDateToString(sale.getSaleDate());
+		String deliveryDate = parseDateToString(sale.getSaleDeliveryDate());
+		String cancelDate = parseDateToString(sale.getSaleCancelDate());
+		request.setAttribute("saleDate", saleDate);
+		request.setAttribute("deliveryDate", deliveryDate);
+		request.setAttribute("cancelDate", cancelDate);
 		request.setAttribute("sale", sale);
 		RequestDispatcher rd = request.getRequestDispatcher("/update-sale.jsp");
 		rd.forward(request, response);
@@ -155,4 +161,6 @@ public class SaleServlet extends HttpServlet {
 			return date;
 		}
 	}
+	
+	
 }
