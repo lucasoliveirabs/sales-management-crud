@@ -57,6 +57,8 @@ public class SaleServlet extends HttpServlet {
 			case "UPDATE":
 				updateSale(request, response);
 				break;
+			case "DELETE":
+				deleteSale(request, response);
 			default:
 				readAllSales(request, response);
 			}
@@ -90,6 +92,13 @@ public class SaleServlet extends HttpServlet {
 		dao.create(sale);
 		readAllSales(request, response); 
 	}
+	
+	private void readAllSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<Sale> list = dao.readAll();
+		request.setAttribute("salesList", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
+		rd.forward(request, response);
+	}
 
 	private void loadSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String saleId = request.getParameter("saleId");
@@ -102,13 +111,6 @@ public class SaleServlet extends HttpServlet {
 		request.setAttribute("cancelDate", cancelDate);
 		request.setAttribute("sale", sale);
 		RequestDispatcher rd = request.getRequestDispatcher("/update-sale.jsp");
-		rd.forward(request, response);
-	}
-	
-	private void readAllSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Sale> list = dao.readAll();
-		request.setAttribute("salesList", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -139,6 +141,12 @@ public class SaleServlet extends HttpServlet {
 		sale.setSaleCancelReason(cancelReason);
 		
 		dao.update(sale);
+		readAllSales(request, response);
+	}
+
+	private void deleteSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Integer saleId = Integer.valueOf(request.getParameter("saleId"));
+		dao.delete(saleId);
 		readAllSales(request, response);
 	}
 	
