@@ -3,7 +3,6 @@ package com.xcompany.controller;
 import java.io.IOException;
 import java.util.List;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,13 +49,16 @@ public class SaleServlet extends HttpServlet {
 				createSale(request, response);
 				break;
 			case "LIST":
-				readSales(request, response);
+				readAllSales(request, response);
 				break;
-			case "EDIT":
+			case "LOAD":
+				loadSale(request, response);
+				break;
+			case "UPDATE":
 				updateSale(request, response);
 				break;
 			default:
-				readSales(request, response);
+				readAllSales(request, response);
 			}
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -68,44 +70,89 @@ public class SaleServlet extends HttpServlet {
 	}
 
 	private void createSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		int productId = Integer.parseInt(request.getParameter("productId"));
+		
+		int productId = Integer.parseInt(request.getParameter("productId"));		
 		int leadId = Integer.parseInt(request.getParameter("leadId"));
-		Date saleDate = parseDate(request.getParameter("saleDate"));
-		Date deliveryDate = parseDate(request.getParameter("deliveryDate"));
+		Date saleDate = parseStringToDate(request.getParameter("saleDate"));
+		Date deliveryDate = parseStringToDate(request.getParameter("deliveryDate"));
 		String deliveryAddress = request.getParameter("deliveryAddress");
-		String status = request.getParameter("status");
 		String obs = request.getParameter("observation");
-
+		
 		Sale sale = new Sale();
 		sale.setProductId(productId);
 		sale.setLeadId(leadId);
 		sale.setSaleDate(saleDate);
 		sale.setSaleDeliveryDate(deliveryDate);
 		sale.setSaleDeliveryAddress(deliveryAddress);
-		sale.setSaleStatus(status);
+		sale.setSaleStatus("N");
 		sale.setSaleObs(obs);
-
+		
 		dao.create(sale);
+		readAllSales(request, response); 
 	}
 
-	private void readSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Sale> list = dao.readAll();
-		request.setAttribute("salesList", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
-		rd.forward(request, response);
-	}
-
-	private void updateSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private void loadSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String saleId = request.getParameter("saleId");
 		Sale sale = dao.readById(saleId);
 		request.setAttribute("sale", sale);
 		RequestDispatcher rd = request.getRequestDispatcher("/update-sale.jsp");
 		rd.forward(request, response);
 	}
+	
+	private void readAllSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<Sale> list = dao.readAll();
+		request.setAttribute("salesList", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
+		rd.forward(request, response);
+	}
+	
+	private void updateSale(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
-	private Date parseDate(String inputDate) throws ParseException { // set to do not allow empty inputs
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-		Date date = (Date) df.parse(inputDate);
+		int saleId = Integer.parseInt(request.getParameter("saleId"));
+		int productId = Integer.parseInt(request.getParameter("productId"));		
+		int leadId = Integer.parseInt(request.getParameter("leadId"));
+		Date saleDate = parseStringToDate(request.getParameter("saleDate"));
+		Date deliveryDate = parseStringToDate(request.getParameter("deliveryDate"));
+		String deliveryAddress = request.getParameter("deliveryAddress");
+		String obs = request.getParameter("observation");
+		String status = request.getParameter("status");
+		Date cancelDate = parseStringToDate(request.getParameter("cancelDate"));
+		String cancelReason = request.getParameter("cancelReason");
+		
+		Sale sale = new Sale();
+		sale.setSaleId(saleId);
+		sale.setProductId(productId);
+		sale.setLeadId(leadId);
+		sale.setSaleDate(saleDate);
+		sale.setSaleDeliveryDate(deliveryDate);
+		sale.setSaleDeliveryAddress(deliveryAddress);
+		sale.setSaleStatus("N");
+		sale.setSaleObs(obs);
+		sale.setSaleStatus(status);
+		sale.setSaleCancelDate(cancelDate);
+		sale.setSaleCancelReason(cancelReason);
+		
+		dao.update(sale);
+		readAllSales(request, response);
+	}
+	
+	private Date parseStringToDate(String inputDate) throws ParseException {
+		if(inputDate == null || inputDate.trim().isEmpty()) {
+			return null;
+		} else {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		Date date = df.parse(inputDate);
 		return date;
+		}
+	}
+	
+	private String parseDateToString(Date inputDate) throws ParseException { 
+		if(inputDate == null) {
+			return null;
+		} else {
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+			String date = df.format(inputDate);
+			return date;
+		}
 	}
 }
