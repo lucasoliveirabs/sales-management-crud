@@ -12,9 +12,7 @@
 <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"
 	type="text/javascript"></script>
 <!-- <script src="/webjars/jquery-validation/1.19.0/jquery.validation.js"> type="text/javascript"></script> -->
-<script src="js/add-sale.js" type="text/javascript">
-	
-</script>
+<script src="js/add-sale.js" type="text/javascript"></script>
 </head>
 
 <body>

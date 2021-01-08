@@ -73,9 +73,9 @@ public class SaleDao implements Dao<Sale> {
 				sale.setProductId(rs.getInt(2));
 				sale.setLeadId(rs.getInt(3));
 				Timestamp tsSaleDate = (Timestamp) rs.getObject(4);
-				sale.setSaleDate(new java.util.Date(tsSaleDate.getTime()));	
+				sale.setSaleDate(new java.util.Date(tsSaleDate.getTime()));
 				Timestamp tsDeliveryDate = (Timestamp) rs.getObject(5);
-				sale.setSaleDeliveryDate(new java.util.Date(tsDeliveryDate.getTime()));	
+				sale.setSaleDeliveryDate(new java.util.Date(tsDeliveryDate.getTime()));
 				sale.setSaleDeliveryAddress(rs.getString(6));
 				sale.setSaleObs(rs.getString(7));
 				sale.setSaleStatus(rs.getString(8));
@@ -160,9 +160,9 @@ public class SaleDao implements Dao<Sale> {
 				sale.setProductId(rs.getInt(2));
 				sale.setLeadId(rs.getInt(3));
 				Timestamp tsSaleDate = (Timestamp) rs.getObject(4);
-				sale.setSaleDate(new java.util.Date(tsSaleDate.getTime()));	
+				sale.setSaleDate(new java.util.Date(tsSaleDate.getTime()));
 				Timestamp tsDeliveryDate = (Timestamp) rs.getObject(5);
-				sale.setSaleDeliveryDate(new java.util.Date(tsDeliveryDate.getTime()));		
+				sale.setSaleDeliveryDate(new java.util.Date(tsDeliveryDate.getTime()));
 				sale.setSaleDeliveryAddress(rs.getString(6));
 				sale.setSaleObs(rs.getString(7));
 				sale.setSaleStatus(rs.getString(8));
@@ -185,6 +185,11 @@ public class SaleDao implements Dao<Sale> {
 			close(connection, st, rs);
 		}
 		return sale;
+	}
+	
+	@Override
+	public Sale authorizeLogin(String username, String password) {
+		return null;
 	}
 
 	private void close(Connection connection, PreparedStatement st, ResultSet rs) {
