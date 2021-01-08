@@ -6,13 +6,11 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/add-sale-style.css">
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"
-	type="text/javascript"></script>
-<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"
-	type="text/javascript"></script>
-<script src="js/add-sale.js" type="text/javascript">
-	
-</script>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js" type="text/javascript"></script>
+<!-- <script src="/webjars/jquery/3.5.0/jquery.min.js"> type="text/javascript"></script> -->
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.js" type="text/javascript"></script>
+	<!-- <script src="/webjars/jquery-validation/1.19.0/jquery.validation.js"> type="text/javascript"></script> -->
+<script src="js/add-sale.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -78,7 +76,7 @@
 						<tr>
 							<td><label></label></td>
 
-							<td><input type="submit" value="Add Sale" id="add" /></td>
+							<td><input type="submit" value="Add Sale" class="submit-button" /></td>
 						</tr>
 
 					</tbody>
