@@ -13,4 +13,6 @@ public interface Dao <T>{
 	void delete(Integer i);	
 	
 	T readById(String s);
+	
+	T authorizeLogin(String username, String password);
 }
