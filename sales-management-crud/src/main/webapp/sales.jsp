@@ -4,8 +4,17 @@
 
 <html>
 <head>
-<title>Sales</title>
+<%
+response.setHeader("Cache Control", "no-cache, no-store, must-revalidate");
+%>
 
+<!-- 
+<c:if test="${sessionScope.user == null}">response.sendRedirect("login.jsp");"); %>
+	//else
+</c:if>
+ -->
+
+<title>Sales</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -17,15 +26,24 @@
 				<li><a href="SaleServlet">Sales</a></li>
 				<li><a href="#">Products</a></li>
 				<li><a href="#">Leads</a></li>
+				<li><a href="update-user.jsp">Edit profile</a></li>
 			</ul>
 		</nav>
+		<div class="logout">
+			<form name="userLogout" id="userLogout" action="User" method="POST">
+				<input type="submit" value="Logout" id="logout-button" /> <input
+					type="hidden" name="command" value="LOGOUT" />
+			</form>
+		</div>
 	</div>
 
 	<div class="container">
 		<div id="content">
 
-			<input type="button" value="New Sale" id="new-sale"
-				onclick="window.location.href='add-sale.jsp'" />
+			<div>
+				<input type="button" value="New Sale" id="new-sale"
+					onclick="window.location.href='add-sale.jsp'" />
+			</div>
 
 			<table>
 				<tr>
@@ -68,9 +86,8 @@
 						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 								value="${s.saleCancelDate}" /></td>
 						<td>${s.saleCancelReason}</td>
-						<td><a href="${saleUpdate}" id="update-button">Update</a>
-						<a href="${saleDelete}" id="delete-button" 
-						onclick="if(confirm('Do you really want to delete this sale?'))">Delete</a></td> 
+						<td><a href="${saleUpdate}" id="update-button">Update</a> <a
+							href="${saleDelete}" id="delete-button">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
