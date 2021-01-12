@@ -31,6 +31,25 @@ li a:hover{
 	color: #FFFFFF;
 }
 
+#logout-button{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 100px;
+	height: 35px;
+	text-align: center;	
+	display: block;
+	color: #FFFFFF;
+	background-color: #928E8D;
+	border: none;
+	cursor: pointer;
+}
+
+#logout-button:hover{
+	background-color: #0775d3;
+	color: #FFFFFF;
+}
+
 .container {
 	width: 100%;
 }
@@ -46,6 +65,7 @@ li a:hover{
 	padding: 5px 10px; 
 	color: #FFFFFF;
 	background: #0775d3;
+	cursor: pointer;
 }	
 
 #new-sale:hover{
