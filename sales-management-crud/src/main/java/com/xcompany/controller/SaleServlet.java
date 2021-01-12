@@ -45,17 +45,11 @@ public class SaleServlet extends HttpServlet {
 			}
 
 			switch (command) {
-			case "ADD":
-				createSale(request, response);
-				break;
 			case "LIST":
 				readAllSales(request, response);
 				break;
 			case "LOAD":
 				loadSale(request, response);
-				break;
-			case "UPDATE":
-				updateSale(request, response);
 				break;
 			case "DELETE":
 				deleteSale(request, response);
@@ -69,17 +63,36 @@ public class SaleServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
+			String command = request.getParameter("command");
+			if (command == null) {
+				readAllSales(request, response);
+			}
+			
+			switch (command) {
+			case "ADD":
+				createSale(request, response);
+				break;
+			case "UPDATE":
+				updateSale(request, response);
+				break;
+			default:
+				readAllSales(request, response);
+			}
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
 	}
 
 	private void createSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		int productId = Integer.parseInt(request.getParameter("productId"));		
+
+		int productId = Integer.parseInt(request.getParameter("productId"));
 		int leadId = Integer.parseInt(request.getParameter("leadId"));
 		Date saleDate = parseStringToDate(request.getParameter("saleDate"));
 		Date deliveryDate = parseStringToDate(request.getParameter("deliveryDate"));
 		String deliveryAddress = request.getParameter("deliveryAddress");
 		String obs = request.getParameter("observation");
-		
+
 		Sale sale = new Sale();
 		sale.setProductId(productId);
 		sale.setLeadId(leadId);
@@ -88,11 +101,11 @@ public class SaleServlet extends HttpServlet {
 		sale.setSaleDeliveryAddress(deliveryAddress);
 		sale.setSaleStatus("N");
 		sale.setSaleObs(obs);
-		
+
 		dao.create(sale);
-		readAllSales(request, response); 
+		readAllSales(request, response);
 	}
-	
+
 	private void readAllSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<Sale> list = dao.readAll();
 		request.setAttribute("salesList", list);
@@ -113,11 +126,11 @@ public class SaleServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/update-sale.jsp");
 		rd.forward(request, response);
 	}
-	
-	private void updateSale(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+	private void updateSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		int saleId = Integer.parseInt(request.getParameter("saleId"));
-		int productId = Integer.parseInt(request.getParameter("productId"));		
+		int productId = Integer.parseInt(request.getParameter("productId"));
 		int leadId = Integer.parseInt(request.getParameter("leadId"));
 		Date saleDate = parseStringToDate(request.getParameter("saleDate"));
 		Date deliveryDate = parseStringToDate(request.getParameter("deliveryDate"));
@@ -126,7 +139,7 @@ public class SaleServlet extends HttpServlet {
 		String status = request.getParameter("status");
 		Date cancelDate = parseStringToDate(request.getParameter("cancelDate"));
 		String cancelReason = request.getParameter("cancelReason");
-		
+
 		Sale sale = new Sale();
 		sale.setSaleId(saleId);
 		sale.setProductId(productId);
@@ -139,7 +152,7 @@ public class SaleServlet extends HttpServlet {
 		sale.setSaleStatus(status);
 		sale.setSaleCancelDate(cancelDate);
 		sale.setSaleCancelReason(cancelReason);
-		
+
 		dao.update(sale);
 		readAllSales(request, response);
 	}
@@ -149,19 +162,19 @@ public class SaleServlet extends HttpServlet {
 		dao.delete(saleId);
 		readAllSales(request, response);
 	}
-	
+
 	private Date parseStringToDate(String inputDate) throws ParseException {
-		if(inputDate == null || inputDate.trim().isEmpty()) {
+		if (inputDate == null || inputDate.trim().isEmpty()) {
 			return null;
 		} else {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-		Date date = df.parse(inputDate);
-		return date;
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+			Date date = df.parse(inputDate);
+			return date;
 		}
 	}
-	
-	private String parseDateToString(Date inputDate) throws ParseException { 
-		if(inputDate == null) {
+
+	private String parseDateToString(Date inputDate) throws ParseException {
+		if (inputDate == null) {
 			return null;
 		} else {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
@@ -169,6 +182,5 @@ public class SaleServlet extends HttpServlet {
 			return date;
 		}
 	}
-	
-	
+
 }
