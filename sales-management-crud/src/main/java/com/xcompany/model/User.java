@@ -21,12 +21,12 @@ public class User {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getUserEmail() {
+	public String getUserUsername() {
 		return userUsername;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userUsername = userEmail;
-	}
+	public void setUserUsername(String userUsername) {
+		this.userUsername = userUsername;
+	}	
 	public String getUserPassword() {
 		return userPassword;
 	}
@@ -48,7 +48,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userEmail=" + userUsername + ", userPassword=" + userPassword
+		return "User [userId=" + userId + ", userUsername=" + userUsername + ", userPassword=" + userPassword
 				+ ", userFirstName=" + userFirstName + ", userLastName=" + userLastName + "]";
 	}
 		

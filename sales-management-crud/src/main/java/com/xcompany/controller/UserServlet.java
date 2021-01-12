@@ -55,7 +55,7 @@ public class UserServlet extends HttpServlet {
 				logout(request, response);
 				break;
 			case "UPDATE":
-				update(request, response);
+				updateUser(request, response);
 				break;
 			default:
 				logout(request, response);
@@ -89,7 +89,7 @@ public class UserServlet extends HttpServlet {
 		response.sendRedirect("login.jsp");
 	}
 	
-	private void update(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String username = request.getParameter("newUsername");
 		String password = request.getParameter("newPassword");
