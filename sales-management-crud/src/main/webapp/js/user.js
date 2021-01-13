@@ -14,44 +14,47 @@ $(document).ready(function() {
 			},
 			newPassword: {
 				required: true,
-				min: 6,
-				max: 12,
-				strongPassword: true
+				rangelength: [6, 12],
 			},
-			confirmNewPassword: {
+			confirmedNewPassword: {
 				required: true,
-				equalTo: "#newPassword"
+				equalTo: "#newPassword",
 			},
 			firstName: {
 				required: true,
-				lettersonly: true
+				lettersonly: true,
 			},
 			lastName: {
 				required: true,
-				lettersonly: true
+				lettersonly: true,
 			}
 		},
 		messages: {
 			username: {
-				required: "Insert a valid username.",
+				required: "Insert your username, please.",
 			},
 			password: {
-				required: "Insert a valid password.",
+				required: "Insert your password, please.",
 			},
 			newUsername: {
 				required: "Empty field.",
-				email: "Insert a valid e-mail.",
+				email: "Please, insert a valid e-mail.",
 			},
 			newPassword: {
 				required: "Empty field.",
-				min: "It must have 6 characters minimal.",
-				max: "It must have 12 characters maximum.",
+				rangelength: "Wow! Please, between 6 and 12 characters.",
+			},
+			confirmedNewPassword: {
+				required: "Oops! They are not the same!",
+				equalTo: "Oops! They are not the same!",
 			},
 			firstName: {
-				required: "Insert your first name.",
+				required: "Your first name, please.",
+				lettersonly: "Your first name, please.",
 			},
 			lastName: {
-				required: "Insert your last name.",
+				required: "Your last name, please.",
+				lettersonly: "Your last name, please.",
 			}
 		}
 	});
