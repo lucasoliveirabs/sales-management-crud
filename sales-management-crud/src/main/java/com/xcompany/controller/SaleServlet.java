@@ -53,6 +53,7 @@ public class SaleServlet extends HttpServlet {
 				break;
 			case "DELETE":
 				deleteSale(request, response);
+				break;
 			default:
 				readAllSales(request, response);
 			}
