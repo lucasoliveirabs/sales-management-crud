@@ -19,7 +19,7 @@
 	<div id="container">
 
 		<div id="form">
-			<form name="mainForm" action="User" method="POST">
+			<form name="mainForm" id="mainForm" action="User" method="POST">
 				<input type="hidden" name="command" value="LOGIN" />
 
 				<table id="login">
@@ -36,16 +36,16 @@
 
 						<tr>
 							<td><label>E-mail address:</label></td>
-							<td><input type="text" name="username" /></td>
+							<td><input type="text" name="username" required/></td>
 						</tr>
 
 						<tr>
 							<td><label>Password:</label></td>
-							<td><input type="password" name="password" /></td>
+							<td><input type="password" name="password" required/></td>
 						</tr>
 
 						<tr class="blank-row">
-							<td colspan="2" height="10px"></td>
+							<td colspan="2" height="10px" ></td>
 						</tr>
 
 						<tr>

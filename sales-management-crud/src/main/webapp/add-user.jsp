@@ -36,27 +36,27 @@
 
 						<tr>
 							<td><label>Username:</label></td>
-							<td><input type="text" name="newUsername" /></td>
+							<td><input type="email" name="newUsername" required/></td>
 						</tr>
 
 						<tr>
 							<td><label>Password:</label></td>
-							<td><input type="password" name="newPassword" /></td>
+							<td><input type="password" name="newPassword" required/></td>
 						</tr>
 
 						<tr>
 							<td><label>Confirm password:</label></td>
-							<td><input type="password" name="confirmNewPassword" /></td>
+							<td><input type="password" name="confirmedNewPassword" required/></td>
 						</tr>
 
 						<tr>
 							<td><label>First name:</label></td>
-							<td><input type="text" name="firstName" /></td>
+							<td><input type="text" name="firstName" required/></td>
 						</tr>
 
 						<tr>
 							<td><label>Last name:</label></td>
-							<td><input type="text" name="lastName" /></td>
+							<td><input type="text" name="lastName" required/></td>
 						</tr>
 
 						<tr class="blank-row">
@@ -64,8 +64,7 @@
 						</tr>
 
 						<tr>
-							<td colspan="2"><input type="submit" value="Create account"
-								id="login-button" /></td>
+							<td colspan="2"><input type="submit" value="Create account"/></td>
 						</tr>
 
 					</tbody>
