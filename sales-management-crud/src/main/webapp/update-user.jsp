@@ -1,5 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html>
@@ -15,11 +13,7 @@
 	type="text/javascript"></script>
 <!-- <script src="/webjars/jquery-validation/1.19.0/jquery.validation.js"> type="text/javascript"></script> -->
 <script src="js/user.js" type="text/javascript"></script>
-<c:if test="${sessionScope.user == null}">
-	<form name="userLogout" action="User" method="POST">
-		<input type="hidden" name="command" value="LOGOUT" />
-	</form>
-</c:if>
+
 </head>
 
 <body>

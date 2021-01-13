@@ -13,6 +13,7 @@
 	type="text/javascript"></script>
 <!-- <script src="/webjars/jquery-validation/1.19.0/jquery.validation.js"> type="text/javascript"></script> -->
 <script src="js/add-sale.js" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -23,6 +24,7 @@
 				<li><a href="SaleServlet">Sales</a></li>
 				<li><a href="#">Products</a></li>
 				<li><a href="#">Leads</a></li>
+				<li><a href="update-user.jsp">Edit profile</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -36,7 +38,7 @@
 		</div>
 
 		<div id="form">
-			<form action="SaleServlet" method="GET">
+			<form action="SaleServlet" method="POST">
 				<input type="hidden" name="command" value="UPDATE" />
 
 				<table>
@@ -50,31 +52,31 @@
 						<tr>
 							<td><label>Product id:</label></td>
 							<td><input type="text" name="productId"
-								value="${sale.productId}" /></td>
+								value="${sale.productId}" required/></td>
 
 						</tr>
 
 						<tr>
 							<td><label>Lead id:</label></td>
-							<td><input type="text" name="leadId" value="${sale.leadId}" /></td>
+							<td><input type="text" name="leadId" value="${sale.leadId}" required/></td>
 						</tr>
 
 						<tr>
 							<td><label>Sale date:</label></td>
 							<td><input type="datetime-local" name="saleDate"
-								value="${saleDate}" />
+								value="${saleDate}" required/>
 						</tr>
 
 						<tr>
 							<td><label>Delivery date:</label></td>
 							<td><input type="datetime-local" name="deliveryDate"
-								value="${deliveryDate}" />
+								value="${deliveryDate}" required/>
 						</tr>
 
 						<tr>
 							<td><label>Delivery address:</label></td>
 							<td><input type="text" name="deliveryAddress"
-								value="${sale.saleDeliveryAddress}" /></td>
+								value="${sale.saleDeliveryAddress}" required/></td>
 						</tr>
 
 						<tr>
@@ -107,7 +109,8 @@
 
 						<tr>
 							<td><label></label></td>
-							<td><input type="submit" value="Update Sale" class="submit-button" /></td>
+							<td><input type="submit" value="Update Sale"
+								class="submit-button" /></td>
 						</tr>
 
 					</tbody>

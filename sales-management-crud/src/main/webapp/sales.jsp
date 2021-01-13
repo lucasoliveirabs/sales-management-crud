@@ -4,16 +4,6 @@
 
 <html>
 <head>
-<%
-response.setHeader("Cache Control", "no-cache, no-store, must-revalidate");
-%>
-
-<!-- 
-<c:if test="${sessionScope.user == null}">response.sendRedirect("login.jsp");"); %>
-	//else
-</c:if>
- -->
-
 <title>Sales</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
