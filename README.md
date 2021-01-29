@@ -1,6 +1,7 @@
 # sales-management-crud
 A web application for managing sales, products and leads.
 
+
 ## Developed using: 
 -JDK 11
 -Eclipse IDE for Enterprise Java Developers 2020-12
@@ -9,6 +10,7 @@ A web application for managing sales, products and leads.
 -Apache Maven
 -Servlets/JSP
 -JDBC API
+
 
 ## Setup the Application:
 
