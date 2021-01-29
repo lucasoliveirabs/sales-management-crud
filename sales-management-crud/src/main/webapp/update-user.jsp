@@ -8,10 +8,8 @@
 <link rel="stylesheet" type="text/css" href="css/add-sale-style.css">
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"
 	type="text/javascript"></script>
-<!-- <script src="/webjars/jquery/3.5.0/jquery.min.js"> type="text/javascript"></script> -->
 <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"
 	type="text/javascript"></script>
-<!-- <script src="/webjars/jquery-validation/1.19.0/jquery.validation.js"> type="text/javascript"></script> -->
 <script src="js/user.js" type="text/javascript"></script>
 
 </head>
@@ -22,8 +20,8 @@
 		<nav>
 			<ul>
 				<li><a href="SaleServlet">Sales</a></li>
-				<li><a href="#">Products</a></li>
-				<li><a href="#">Leads</a></li>
+				<li><a href="ProductServlet">Products</a></li>
+				<li><a href="LeadServlet">Leads</a></li>
 				<li><a href="update-user.jsp">Edit profile</a></li>
 			</ul>
 		</nav>
@@ -62,13 +60,13 @@
 
 						<tr>
 							<td><label>First name:</label></td>
-							<td><input type="text" name="firstName"
+							<td><input type="text" name="newFirstName"
 								value="${user.userFirstName}" required/></td>
 						</tr>
 
 						<tr>
 							<td><label>Last name:</label></td>
-							<td><input type="text" name="lastName"
+							<td><input type="text" name="newLastName"
 								value="${user.userLastName}" required/></td>
 						</tr>
 
@@ -80,7 +78,7 @@
 							<td><label></label></td>
 
 							<td><input type="submit" value="Save changes"
-								id="login-button" /></td>
+								id="submit-button" /></td>
 						</tr>
 
 					</tbody>

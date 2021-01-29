@@ -14,8 +14,8 @@
 		<nav>
 			<ul>
 				<li><a href="SaleServlet">Sales</a></li>
-				<li><a href="#">Products</a></li>
-				<li><a href="#">Leads</a></li>
+				<li><a href="ProductServlet">Products</a></li>
+				<li><a href="LeadServlet">Leads</a></li>
 				<li><a href="update-user.jsp">Edit profile</a></li>
 			</ul>
 		</nav>
