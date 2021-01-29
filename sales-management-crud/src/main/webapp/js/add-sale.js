@@ -17,6 +17,9 @@ $(document).ready(function() {
 			},
 			deliveryAddress: {
 				required: true
+			},
+			observation: {
+				maxlength: 150
 			}
 		},
 		messages: {
@@ -37,6 +40,9 @@ $(document).ready(function() {
 			deliveryAddress: {
 				required: "Where are we we going to deliver it?"
 			},
+			observation: {
+				maxlength: "Please, 150 characters maximum."
+			}
 		}
 	});
 });
