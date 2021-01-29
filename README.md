@@ -1,7 +1,7 @@
 # sales-management-crud
 A web application for managing sales, products and leads.
 
-# Developed using: 
+## Developed using: 
 -JDK 11
 -Eclipse IDE for Enterprise Java Developers 2020-12
 -MySQL Database 
@@ -10,7 +10,7 @@ A web application for managing sales, products and leads.
 -Servlets/JSP
 -JDBC API
 
-# Setup the Application:
+## Setup the Application:
 
 1 Create a schema in MySQL named 'xcompany'
 1.1. username: "root" / password: "mysqlpass321" (or modify 'context.xml' configuration)
