@@ -7,17 +7,6 @@
 
 	<display-name>Archetype Created Web Application</display-name>
 	<description>sales-management-crud</description>
-	<filter>
-		<description>
-		</description>
-		<display-name>SessionFilter</display-name>
-		<filter-name>SessionFilter</filter-name>
-		<filter-class>com.xcompany.controller.SessionFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>SessionFilter</filter-name>
-		<url-pattern>/SessionFilter</url-pattern>
-	</filter-mapping>
 
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
