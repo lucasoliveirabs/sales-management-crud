@@ -91,7 +91,7 @@ public class UserDao implements Dao<User> {
 	}
 
 	@Override
-	public void delete(Integer i) {
+	public void delete(String s) {
 	}
 
 	@Override
