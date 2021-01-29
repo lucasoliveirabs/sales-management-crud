@@ -10,7 +10,7 @@ public interface Dao <T>{
 	
 	void update(T t);
 	
-	void delete(Integer i);	
+	void delete(String s);	
 	
 	T readById(String s);
 	
