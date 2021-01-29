@@ -30,6 +30,7 @@ public class SaleDao implements Dao<Sale> {
 		datasource = ds;
 	}
 
+	@Override
 	public void create(Sale sale) {
 		Connection connection = null;
 		PreparedStatement st = null;
@@ -58,6 +59,7 @@ public class SaleDao implements Dao<Sale> {
 		}
 	}
 
+	@Override
 	public List<Sale> readAll() {
 		Connection connection = null;
 		PreparedStatement st = null;
@@ -97,6 +99,7 @@ public class SaleDao implements Dao<Sale> {
 		return list;
 	}
 
+	@Override
 	public void update(Sale sale) {
 		Connection connection = null;
 		PreparedStatement st = null;
@@ -126,13 +129,15 @@ public class SaleDao implements Dao<Sale> {
 		}
 	}
 
-	public void delete(Integer i) {
+	@Override
+	public void delete(String s) {
 		Connection connection = null;
 		PreparedStatement st = null;
+		int saleId = Integer.parseInt(s);
 		try {
 			connection = datasource.getConnection();
 			st = connection.prepareStatement(SQL_DELETE);
-			st.setInt(1, i.intValue());
+			st.setInt(1, saleId);
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -189,6 +194,7 @@ public class SaleDao implements Dao<Sale> {
 	
 	@Override
 	public Sale authorizeLogin(String username, String password) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
