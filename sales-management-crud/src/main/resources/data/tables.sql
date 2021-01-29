@@ -5,7 +5,7 @@ lead_id int not null,
 sale_date datetime not null,
 sale_delivery_date datetime not null,
 sale_delivery_adress varchar(50) not null,
-sale_observation varchar(50) null,
+sale_observation varchar(150) null,
 sale_status char not null,
 sale_cancel_date datetime null, 
 sale_cancel_reason varchar(50) null,
@@ -37,7 +37,8 @@ primary key (lead_id)
 
 create table products (
 product_id int not null auto_increment,
-product_class varchar(20) not null,
-product_name varchar(30) not null,
+product_department varchar(50) not null,
+product_class varchar(50) not null,
+product_name varchar(50) not null,
 primary key (product_id)
 );
