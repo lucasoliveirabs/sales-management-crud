@@ -61,7 +61,7 @@ public class SaleServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
@@ -106,10 +106,10 @@ public class SaleServlet extends HttpServlet {
 		dao.create(sale);
 		readAllSales(request, response);
 	}
-
+	
 	private void readAllSales(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<Sale> list = dao.readAll();
-		request.setAttribute("salesList", list);
+		request.setAttribute("saleList", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/sales.jsp");
 		rd.forward(request, response);
 	}
@@ -129,7 +129,6 @@ public class SaleServlet extends HttpServlet {
 	}
 
 	private void updateSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		int saleId = Integer.parseInt(request.getParameter("saleId"));
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		int leadId = Integer.parseInt(request.getParameter("leadId"));
@@ -157,9 +156,9 @@ public class SaleServlet extends HttpServlet {
 		dao.update(sale);
 		readAllSales(request, response);
 	}
-
+	
 	private void deleteSale(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Integer saleId = Integer.valueOf(request.getParameter("saleId"));
+		String saleId = request.getParameter("saleId");
 		dao.delete(saleId);
 		readAllSales(request, response);
 	}
@@ -173,7 +172,7 @@ public class SaleServlet extends HttpServlet {
 			return date;
 		}
 	}
-
+	
 	private String parseDateToString(Date inputDate) throws ParseException {
 		if (inputDate == null) {
 			return null;
